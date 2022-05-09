@@ -1,14 +1,14 @@
-# Schedule for Day 3
+# Schedule for Day 2
 
 ## RNA-seq alignment and differential gene expression
 
 | Time            |   Topic  |
 |:------------------------:|:----------:|
-| 10:00 - 11:00 | [Day 2 Review](lessons/Day2_review.md) |
+| 10:00 - 10:30 | [Day 1 Review](lessons/Day1_review.md) |
+| 10:30 - 11:00 | Introduction to Next-Generation Sequencing |
+| 11:00 - 11:15 | [RNAseq Alignment]() |
 | 11:00 - 11:15 | break |
-| 11:15 - 11:45 | [VIM text editor](lessons/01_vim.md) |
-| 11:00 - 11:15 | break |
-| 11:45 - 12:30 | [Shell Scripting](lessons/02_loops_and_scripts.md)
+| 11:15 - 12:30 | [Alignment STAR](lessons/02_loops_and_scripts.md)
 | 12:30 - 13:45 | break |
 | 13:45 - 14:00 | [Introduction to RNA-seq](lessons/RNAseq_alignment.pdf) |
 | 14:00 - 15:00 | [RNAseq Alignment](lessons/03_RNAseq_alignment.md) |

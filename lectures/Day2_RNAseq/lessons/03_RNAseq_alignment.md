@@ -1,30 +1,34 @@
 ---
 title: "RNAseq Alignment with STAR"
 author: "Shahin Shahsavari"
-date: November 2021
+date: May 2022
 ---
 
 Approximate time: 90 minutes
 
 ## Learning Objectives:
 
+* Exploring the genomics files
 * Understanding the alignment method STAR utilizes to align sequence reads to the reference genome
 * Identifying the intricacies of alignment tools used in NGS analysis (parameters, usage, etc)
 * Choosing appropriate STAR alignment parameters for our dataset
+* Hands-on alignment
 
 ## Read Alignment
+
+The RNAseq workflow begins with quality control and alignment, similar to the other NGS applications. Alignment is followed by read counting within features. Then, library normalization and statistical analysis is performed, followed by data visualization.
 
 <img src="../img/RNAseqWorkflow.png" width="400">
 
 
 ## Directory Set-up
 
-To start with variant calling, we need to set-up our directory structure, and ensure we have all the softwares that we need.
+To start with RNAseq analysis, we need to set-up our directory structure, and ensure we have all the softwares that we need.
 
 In order to remain organized, I always prepare my directory as follows using `mkdir`:
 
 ```
-~/Day3/
+~/Day2/
     ├── raw_data/
     ├── quality_control/
     ├── results/
@@ -39,12 +43,13 @@ The following softwares are installed on the course server for bulk RNAseq:
 1. [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 2. [STAR](https://github.com/alexdobin/STAR)
 3. [samtools](https://github.com/samtools/samtools)
-4. [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
+4. [IGV](https://software.broadinstitute.org/software/igv/download)
+5. [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
 
-Now, let's install STAR on our server environment using the documentation linked above
+Depending on the software, you can download and compile the source code. Let's install STAR on our server environment using the documentation linked above:
 
 ```
-$ cd ~/Day3/software_installation
+$ cd ~/Day2/software_installation
 $ git clone https://github.com/alexdobin/STAR.git
 $ cd STAR/source
 $ make STAR
@@ -54,13 +59,15 @@ $ make STAR
 
 ### 1.1 QC
 
-Similar to what we did for DNAseq and ChiPseq, we will start off with the quality step. We will make use of the `fastqc` command to generate an **html** file which we could view in a browser.
+> **NOTE:** It is a good practice to perform a short Quality Control step to ensure there are no
+serious problems with our samples such as the presence of vector contamination or low quality reads.
+In general, bwa mem doesn't need trimming.
 
 ```bash
-$ cd ~/Day3/raw_data
+$ cd ~/Day2/raw_data
 $ fastqc sample1.fastq
 $ firefox sample1_fastqc.html
-$ mv *fastqc* ~/Day3/quality_control
+$ mv *fastqc* ~/Day2/quality_control
 ```
 
 > **NOTE:** Most of the times, we won't be able to run a Graphical Interface on the server computer. In that case, you could transfer the files to your local computer using *FileZilla* or `scp`.
@@ -69,7 +76,7 @@ Now that we have explored the quality of our raw reads, we can move on to read a
 
 To determine where on the human genome our reads originated from, we will align our reads to the reference genome using [STAR](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3530905/) (Spliced Transcripts Alignment to a Reference). STAR is an aligner designed to specifically address many of the challenges of RNA-seq data mapping using a strategy to account for spliced alignments.
 
-### STAR Alignment Strategy
+### 1.2 STAR Alignment Strategy
 
 STAR is shown to have high accuracy and outperforms other aligners by more than a factor of 50 in mapping speed, but it is memory intensive. The algorithm achieves this highly efficient mapping by performing a two-step process:
 
@@ -117,7 +124,7 @@ Aligning reads using STAR is a two step process:
 1. Create a genome index 
 2. Map reads to the genome
 
-> We generated an index for bwa using a small fasta file yesterday. Given the large size of the human genome, indexing takes a fairly long time (30-60 mins). I have already prepared the indeces for you. On [Biowulf](https://hpc.nih.gov/apps/STAR.html), there are indexes available for a variety of genomes. You could also access indexed genomes from [Illumina's iGenomes](https://support.illumina.com/sequencing/sequencing_software/igenome.html).
+> Given the large size of the human genome, indexing takes a fairly long time (30-60 mins). I have already prepared the indeces for you. On [Biowulf](https://hpc.nih.gov/apps/STAR.html), there are indexes available for a variety of genomes. You could also access indexed genomes from [Illumina's iGenomes](https://support.illumina.com/sequencing/sequencing_software/igenome.html).
 
 
 ```bash

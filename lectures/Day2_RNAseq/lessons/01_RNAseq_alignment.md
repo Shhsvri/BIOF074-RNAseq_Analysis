@@ -128,20 +128,44 @@ Aligning reads using STAR is a two step process:
 
 
 ```bash
-$ ls -l ~/Day3/reference_test/
+$ ls -l ~/Day2/reference_test/
 ```
 
 This is a good time to also explore the reference file types we are using for RNAseq:
 
 ```bash
-$ cd ~/Day3/reference_test/
+$ cd ~/Day2/reference_test/
 $ ls -l -h
 $ head GRCh38_chr19.gtf
 $ head GRCh38_chr19.fa
 ```
-### GTF (Gene Transfer Format) file
+### Fasta file
+
+Let's explore the GRCh38 fasta reference file at `~/Day2/genome/` before alignment.
+
+```bash
+$ cd ~/Day2/genome
+```
+---
+**Exercise**
+1. How large (Bytes) is this fasta reference? `ls`
+2. View the top 20 lines of your fasta reference. `head`
+3. Count the number of lines in your fasta reference `wc`
+4. Find all the lines that contain ">" `grep '>'`
+5. Find all the lines that contain ">" and in addition to 3 more lines after each hit. `grep -A 3 '>'`
+---
+
+
+### GTF (Gene Transcript Format) file
 
 ![STAR\_step4](../img/GTF.png)
+
+STAR is memory intensive aligner. For the human genome, it requires more than 40GB of RAM. Thus, we are mapping our reads to the chromosome2 reference which is smaller in size than the complete GRCh38 genome.
+
+### Creating a genome index
+
+Before we generate the index of our chr19 fasta file, let's explore its content.
+change your directory to `~/Day2/reference_test`
 
 ---
 
@@ -149,13 +173,9 @@ $ head GRCh38_chr19.fa
 
 * count the number of lines in `GRCh38_chr19.fa`
 * confirm that you only have one chromosome in it
-* What is the size of the chromosome2 fasta file? `~/Day3/STAR_chr2_genome`
-* What is the size of the complete hg38 human reference? **hint:** use the Day2 reference at `~/Day2/genome`
+* What is the size of the chromosome2 fasta file? `~/Day2/STAR_chr2_genome`
+
 ---
-
-STAR is memory intensive aligner. For the human genome, it requires more than 40GB of RAM. Thus, we are mapping our reads to the chromosome2 reference which is smaller in size than the complete GRCh38 genome.
-
-### Creating a genome index
 
 In order to create the genome indexes, you would run the following (per the STAR's manual):
 
@@ -172,7 +192,7 @@ The basic options to **generate genome indices** using STAR are as follows:
 
 
 ```bash
-cd ~/Day3/reference_test
+cd ~/Day2/reference_test
 STAR	--runThreadN 2 \
 	--runMode genomeGenerate \
 	--genomeDir . \
@@ -208,7 +228,7 @@ We can access the software by simply using the STAR command followed by the basi
 
 
 ```bash
-cd ~/Day3
+cd ~/Day2
 
 STAR	--runThreadN 2 \
 	--genomeDir STAR_chr2_genome/ \
@@ -217,18 +237,56 @@ STAR	--runThreadN 2 \
 	--outFileNamePrefix results/sample1_
 ```
 
+**Questions**
+
+1. Is the output of our aligner sorted?
+2. What are the columns in a sam file?
+
+<img src="../img/sam.png" size=300>
+
+### 1.3 Convert your sam file to bam
+
+SAM (Sequence Alignment Map) files are pure text files which take too much space. Common practice
+is to compress these files using `samtools` into BAM (Binary Alignment Map) files.
+
+```bash
+$ samtools view -b ptA.sam > ptA.bam
+```
+
+### 1.4 Sorting your alignment bam file
+
+The next step is to sort all the aligned records by their chromosomal location.
+There are a variety of tools for this task and they all perform the same task. Some are faster than
+others. We will use `samtools` which is very fast and generates all the needed downstream files.
+
+```bash
+$ samtools sort ptA.bam > ptA.sorted.bam
+```
+
+This will generate the sorted bam file in the same directory.
 
 ---
 **Exercise**
 
-- In order to view this file, we need to
-	1. convert it to bam
-	2. sort
-	3. Index
+We currently have 3 alignment files. `ptA.sam`, `ptA.bam`, and `ptA.sorted.bam`
 
-Process the output sam file to prepare it for viewing in IGV.
-
+1. How much smaller is that BAM file compared with the SAM?
+2. How does the size of the sorted BAM file compare with our unsorted BAM file?
 ---
+
+### 1.5 Creating an index for the final bam file
+
+Now that we have a sorted BAM file that has duplicates marked, we need to ensure the index file
+for it exist. Just like a book that needs a table of contents, a bam file needs an index.
+
+```bash
+$ samtools index ptA.markdup.sorted.bam
+```
+
+This file is now ready for visualization in IGV or any other visualization tool.
+
+
+
 
 ---
 *This lesson has been developed by Shahin Shahsavari adapted from [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

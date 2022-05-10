@@ -2,7 +2,7 @@
 
 title: "Review of Day 1"
 author: "Shahin Shahsavari"
-date: July 2020
+date: May 2022
 
 ---
 
@@ -56,7 +56,7 @@ cut -f 1,3 # extract first and third columns
 1.  Change your directory to `~/Day2/Day1_review`. `cd`
 2.  Find the size of all the files in the `Day1_review` folder. `ls`
 3.  Find the number of lines in `ptA_R1.fastq`. `wc`
-4.  How many reads in `ptA_R1.fastq` contain `NNNNN`? `grep`, `|` and `wc`
+4.  How many reads in `_R1.fastq` contain `NNNNN`? `grep`, `|` and `wc`
 5.  Write the fastq records that contain `NNNNN` into a new file called `bad_reads.fastq`.
 
 ---

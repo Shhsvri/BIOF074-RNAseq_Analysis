@@ -4,17 +4,17 @@
 
 | Time            |   Topic  |
 |:------------------------:|:----------:|
-| 10:00 - 10:30 | [Day 1 Review](lessons/Day1_review.md) |
-| 10:30 - 11:00 | Introduction to Next-Generation Sequencing |
-| 11:00 - 11:15 | [RNAseq Alignment]() |
-| 11:00 - 11:15 | break |
-| 11:15 - 12:30 | [Alignment STAR](lessons/02_loops_and_scripts.md)
-| 12:30 - 13:45 | break |
-| 13:45 - 14:00 | [Introduction to RNA-seq](lessons/RNAseq_alignment.pdf) |
-| 14:00 - 15:00 | [RNAseq Alignment](lessons/03_RNAseq_alignment.md) |
-| 13:00 - 14:00 | Lunch |
-| 14:00 - 15:00 | [RNAseq Alignment Quality and Visualization](lessons/04_alignment_quality.md) |
-| 15:00 - 15:15 | break |
-| 15:15 - 16:00 | [RNAseq Alignment Quality and Visualization](lessons/04_alignment_quality.md) |
+| 13:00 - 13:30 | [Day 1 Review](lessons/Day1_review.md) |
+| 13:30 - 14:00 | Introduction to Next-Generation Sequencing |
+| 14:00 - 14:10 | break |
+| 14:10 - 14:20 | [Introduction to RNAseq](lessons/RNAseq_alignment.pdf) |
+| 14:20 - 15:00 | [RNAseq Alignment](lessons/01_RNAseq_alignment.md) |
+| 15:00 - 15:10 | break |
+| 15:10 - 16:00 | [RNAseq Alignment](lessons/01_RNAseq_alignment.md) |
+| 16:00 - 17:00 | break |
+| 17:00 - 18:00 | [RNAseq Alignment Quality and Visualization](lessons/04_alignment_quality.md) |
+| 18:00 - 18:10 | break |
+| 18:10 - 19:00 |  |
+| 19:00 - 20:00 | Office Hours |
 
 ---

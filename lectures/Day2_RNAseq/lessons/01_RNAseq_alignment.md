@@ -150,8 +150,8 @@ $ cd ~/Day2/genome
 **Exercise**
 1. How large (Bytes) is this fasta reference? `ls`
 2. View the top 20 lines of your fasta reference. `head`
-3. Count the number of lines in your fasta reference `wc`
-4. Find all the lines that contain ">" `grep '>'`
+3. Count the number of lines in your fasta reference. `wc`
+4. Find all the lines that contain ">". `grep '>'`
 5. Find all the lines that contain ">" and in addition to 3 more lines after each hit. `grep -A 3 '>'`
 ---
 
@@ -171,9 +171,9 @@ change your directory to `~/Day2/reference_test`
 
 **Exercise**
 
-* count the number of lines in `GRCh38_chr19.fa`
-* confirm that you only have one chromosome in it
-* What is the size of the chromosome2 fasta file? `~/Day2/STAR_chr2_genome`
+1. Count the number of lines in `GRCh38_chr19.fa`
+2. Confirm that you only have one chromosome in it
+3. What is the size of the chromosome2 fasta file? `~/Day2/STAR_chr2_genome`
 
 ---
 
@@ -237,12 +237,19 @@ STAR	--runThreadN 2 \
 	--outFileNamePrefix results/sample1_
 ```
 
+The output is stored in the `~/Day2/results` folder.
+
+```bash
+$ cd ~/Day2/results
+```
+
+
 **Questions**
 
 1. Is the output of our aligner sorted?
 2. What are the columns in a sam file?
 
-<img src="../img/sam.png" size=300>
+<img src="../img/sam_bam.png" size=300>
 
 ### 1.3 Convert your sam file to bam
 
@@ -250,7 +257,7 @@ SAM (Sequence Alignment Map) files are pure text files which take too much space
 is to compress these files using `samtools` into BAM (Binary Alignment Map) files.
 
 ```bash
-$ samtools view -b ptA.sam > ptA.bam
+$ samtools view -b sample1_Aligned.out.sam > sample1.bam
 ```
 
 ### 1.4 Sorting your alignment bam file
@@ -260,7 +267,7 @@ There are a variety of tools for this task and they all perform the same task. S
 others. We will use `samtools` which is very fast and generates all the needed downstream files.
 
 ```bash
-$ samtools sort ptA.bam > ptA.sorted.bam
+$ samtools sort sample1.bam > sample1.sorted.bam
 ```
 
 This will generate the sorted bam file in the same directory.
@@ -268,7 +275,7 @@ This will generate the sorted bam file in the same directory.
 ---
 **Exercise**
 
-We currently have 3 alignment files. `ptA.sam`, `ptA.bam`, and `ptA.sorted.bam`
+We currently have 3 alignment files. `sample1.sam`, `sample1.bam`, and `sample1.sorted.bam`
 
 1. How much smaller is that BAM file compared with the SAM?
 2. How does the size of the sorted BAM file compare with our unsorted BAM file?
@@ -280,11 +287,15 @@ Now that we have a sorted BAM file that has duplicates marked, we need to ensure
 for it exist. Just like a book that needs a table of contents, a bam file needs an index.
 
 ```bash
-$ samtools index ptA.markdup.sorted.bam
+$ samtools index sample1.sorted.bam
 ```
 
 This file is now ready for visualization in IGV or any other visualization tool.
 
+[IGV](http://software.broadinstitute.org/software/igv/) (Integrative Genomics Viewer) is a graphical
+tool for the visualiztion of sorted bam files.
+
+> **NOTE** BAM files must be indexed before viewing in IGV. Ensure a bam index file exists in the same directory alongside your BAM file.
 
 
 

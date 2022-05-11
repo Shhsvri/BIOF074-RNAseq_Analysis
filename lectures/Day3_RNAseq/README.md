@@ -1,10 +1,10 @@
-# Schedule for Day 4
+# Schedule for Day 3
 
-## Differential Gene Expression
+## Accessing Public Data and Differential Gene Expression
 
 | Time            |   Topic  |
 |:------------------------:|:----------:|
-| 13:00 - 14:00 | [Day 3 Review](lessons/Day3_review.md) |
+| 13:00 - 14:00 | [Day 3 Review](lessons/Day2_review.md) |
 | 14:00 - 14:15 | break |
 | 14:15 - 14:30 | [Accessing Public Data](lessons/02_accessing_public_experimental_data.md) |
 | 14:30 - 14:45 | [Downloading Raw Sequencing Data from SRA](lessons/03_downloading_from_SRA.md) |

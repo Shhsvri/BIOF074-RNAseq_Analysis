@@ -58,13 +58,6 @@ You could use `gedit` through *X2go* to create the RNAseq script. Alternatively,
 comfortable using `vim`, you could use your personal computer's terminal to connect to the
 server and use `vim` for scripting and text editing.
 
-In order to connect to the server over `ssh`, open the terminal on your local computer and
-run:
-
-```bash
-$ ssh USERNAME@SERVER_IP
-```
-
 ```bash
 $ gedit RNAseq.sh
 ```
@@ -80,12 +73,12 @@ $ vim RNAseq.sh
 ```bash
 #!/bin/bash
 
-# BIOF045: 03/17/2022
+# BIOF074: 05/11/2022
 # This script for RNA alignment, sorting, and indexing
 
 # 0. set up the file structure and change into the review directory
-cd ~/Day4/Day3_review
-genome_dir=~/Day3/STAR_chr2_genome/
+cd ~/Day3/Day3_review
+genome_dir=~/Day2/STAR_chr2_genome/
 threads=2
 
 for fastq_file in *.fastq

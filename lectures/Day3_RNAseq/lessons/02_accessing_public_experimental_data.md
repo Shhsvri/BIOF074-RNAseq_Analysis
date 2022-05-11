@@ -74,22 +74,10 @@ Now that we have these files, if we wanted to perform differential expression an
 
 While navigating the GEO website is a perfectly fine way to download data from GEO, oftentimes you may want to download multiple files at the same time or download large files that you don't want to store on your personal computer. Generally, the best way to do this is by downloading the files on the cloud.
 
-### Downloading on a remote server 
-
-We will now use the secure shell (`ssh`) command using the 'Terminal' program for Macs or 'Power Shell' for Windows (Use PuTTY if you don't have the latest updates). In the console from these programs, type:
-
-```bash
-$ ssh username@54.234.225.44
-```
-
-You will be prompted to enter your password.
-
-This is the common way to access most servers in a secure manner.
-
 Now, we can download our data to an appropriate directory. Good data management practices will ensure we have an organized project directory for our analysis. We can create and change directories to the folder to which we plan to download the data.
 
 ```bash
-$ cd ~/Day5/GEO
+$ cd ~/Day3/GEO
 ```
 
 To access the FTP site, return to the [GEO home page](https://www.ncbi.nlm.nih.gov/geo/) and under the "Tools" header, click on "FTP site".
@@ -107,19 +95,19 @@ To download the data associated with the paper, "MOV10 and FMRP Regulate AGO2 As
 3. Enter the `GSE50499/` folder
 4. Use the `wget` command followed by the link to the `suppl/` directory (right-clicking and choosing 'Copy Link Address'). 
 
-	<img src="../img/geo_folder_cp.png" width="500">
+<img src="../img/geo_folder_cp.png" width="500">
 
-	Using the `wget` command to copy this dataset.
+Using the `wget` command to copy this dataset.
 
-	```bash
-	$ wget https://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/GSE50499_GEO_Ceman_counts.txt.gz 
-	```
+```bash
+$ wget https://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/GSE50499_GEO_Ceman_counts.txt.gz 
+```
 
 5. You could also load the entire directory using:
 
-	```bash
-	$ wget --recursive --no-parent -nd ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
-	```
+```bash
+$ wget --recursive --no-parent -nd ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE50nnn/GSE50499/suppl/
+```
 ---
 
 **Exercises**

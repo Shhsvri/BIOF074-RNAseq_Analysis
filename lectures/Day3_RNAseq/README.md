@@ -4,6 +4,7 @@
 
 | Time            |   Topic  |
 |:------------------------:|:----------:|
+| 13:00 - 13:15 | [Intro to Vim](lessons/01_vim.md)
 | 13:00 - 14:00 | [Day 3 Review](lessons/Day2_review.md) |
 | 14:00 - 14:15 | break |
 | 14:15 - 14:30 | [Accessing Public Data](lessons/02_accessing_public_experimental_data.md) |

@@ -77,7 +77,7 @@ $ vim RNAseq.sh
 # This script for RNA alignment, sorting, and indexing
 
 # 0. set up the file structure and change into the review directory
-cd ~/Day3/Day3_review
+cd ~/Day3/Day2_review
 genome_dir=~/Day2/STAR_chr2_genome/
 threads=2
 

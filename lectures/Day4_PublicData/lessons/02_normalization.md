@@ -26,7 +26,7 @@ library(gplots) # heatmap.2()
 
 ```R
 # Read the counts matrix and its associated metadata file
-setwd("~/Day5/DESeq2_normalization")
+setwd("~/Day3/DESeq2_normalization")
 countTable <- read.table("yeast_counts.tsv", header=TRUE, row.names=1)
 phenoTable <- read.table("yeast_metadata.tsv", header=TRUE, row.names=1)
 ```
@@ -126,7 +126,7 @@ plotDensity(log2(counts(dds.norm, normalized=TRUE)+epsilon), col=col.pheno.selec
 # run estimateDispersions on the normalized data and run the
 # negative binomial test to obrain p values
 dds.disp <- estimateDispersions(dds.norm)
-alpha <- 0.0001
+alpha <- 0.01
 waldTestResult <- nbinomWaldTest(dds.disp)
 resultDESeq2 <- results(waldTestResult, alpha=alpha, pAdjustMethod="BH")
 head(resultDESeq2)

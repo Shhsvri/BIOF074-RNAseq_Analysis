@@ -27,9 +27,9 @@ and the use of publicly available datasets.
 | Time            |   Topic  |
 |:------------------------:|:----------:|
 | Day1 | [Introduction to Shell and Cloud Computing](lectures/Day1_IntroShell) |
-| Day2 | [RNA Sequencing, Transcriptomics and Shell Scripting 1](lectures/Day2_RNAseq) |
-| Day3 | [RNA Sequencing, Transcriptomics and Shell Scripting 2](lectures/Day3_RNAseq) |
-| Day4 | [Accessing Public Data and Capstone Project](lectures/Day4_PublicData) |
+| Day2 | [RNA Sequencing Data Analysis](lectures/Day2_RNAseq) |
+| Day3 | [RNA Sequencing Data Analysis and Accessing Public Data](lectures/Day3_RNAseq) |
+| Day4 | [scRNA Sequencing Data Analysis and Capstone Projects](lectures/Day4_PublicData) |
 
 
 ### Installation Requirements

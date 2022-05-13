@@ -1,6 +1,6 @@
-# Workshop Schedule
+# Schedule for Day 4
 
-## Accessing Public Datasets
+## scRNAseq Data Analysis and Final Projects
 
 | Time            |   Topic  |
 |:------------------------:|:----------:|
@@ -10,4 +10,4 @@
 | 14:15 - 15:00 | [scRNA Sequencing Data Analysis](lessons/03_scRNAseq.md) |
 | 15:00 - 15:10 | break |
 | 15:10 - 16:00 | [scRNA Sequencing Data Analysis](lessons/03_scRNAseq.md) |
-| 16:00 - 18:00 | [Final Projects](04_final_projects.md) |
+| 16:00 - 18:00 | [Final Projects](lessons/04_final_projects.md) |

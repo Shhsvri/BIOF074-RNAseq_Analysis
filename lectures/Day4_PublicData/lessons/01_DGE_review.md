@@ -19,8 +19,8 @@ library(EnhancedVolcano)
 
 ### Read in the data
 ```R
-$ Read the count matrix and the metadata
-setwd("~/Day4/combined_counts2/")
+# Read the count matrix and the metadata
+setwd("~/Day3/combined_counts2/")
 counts <- read.table("counts2.tsv",header=TRUE,sep="\t",row.names=1)
 metadata <- read.table("metadata2.tsv",sep="\t",header=TRUE,row.names=1)
 View(metadata)
@@ -35,11 +35,12 @@ colnames(counts) = rownames(metadata)
 hist(log(rowSums(counts)),breaks=100)
 quantile(rowSums(counts),probs=c(0.01,0.05,0.10,0.50))
 # Remove the bottom Xth percentile
-counts_filtered <- counts %>% filter(rowSums(counts) >= 11)
+counts_filtered <- counts %>% filter(rowMeans(counts) >= 6)
 ```
 
 ### Load data in DESeq2 with appropriate design 
 ```R
+# Create the DESeq object
 dds <- DESeqDataSetFromMatrix(countData = counts_filtered,
 				colData = metadata,
 				design= ~ treatment)
@@ -55,6 +56,7 @@ res_ordered <- res[order(res$padj),]
 
 ### Transform data for quality control
 ```R
+# Create a PCA plot
 rld <- rlog(dds, blind=FALSE)
 plotPCA(rld, intgroup="treatment")
 ```
@@ -64,9 +66,9 @@ plotPCA(rld, intgroup="treatment")
 # Plot the normalized counts for your genes of interset
 par(mfrow=c(2,2))
 plotCounts(dds,gene="Apc_37324",intgroup="treatment",main="Apc")
-plotCounts(dds,gene="Brd4_35665",intgroup="treatment",main="BRD4")
-plotCounts(dds,gene="Myc_33094",intgroup="treatment",main="MYC")
-plotCounts(dds,gene="Pms2_14724",intgroup="treatment",main="PMS2")
+plotCounts(dds,gene="Brd4_35665",intgroup="treatment",main="Brd4")
+plotCounts(dds,gene="Myc_33094",intgroup="treatment",main="Myc")
+plotCounts(dds,gene="Pms2_14724",intgroup="treatment",main="Pms2")
 ```
 
 ### Volcano plot 
